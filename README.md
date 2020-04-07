@@ -1,2 +1,7 @@
-# observability-as-code
-Example repository demonstrating Observability As Code
+# Observability as Code
+
+Examples for Observability as Code with Terraform
+
+## Configurations
+
+* Datadog
