@@ -226,7 +226,6 @@
             },
             "event_stream_definition": {
               "query": "sources:docker",
-              "tags_execution": "and",
               "event_size": "s",
               "time": {
                 "live_span": "1d"
@@ -242,7 +241,6 @@
             },
             "event_timeline_definition": {
               "query": "sources:docker",
-              "tags_execution": "and",
               "time": {
                 "live_span": "1d"
               }

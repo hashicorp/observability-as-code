@@ -2,6 +2,7 @@ docker-dashboard:
 	jq '.resource.datadog_dashboard.docker = \
 	(.widget = .widgets | .template_variable = .template_variables | \
 	.widget |= map((. | .definition.request = .definition.requests | del(.definition.requests) | \
+	del(.definition.tags_execution) | \
 	del(.definition.request | select(. == null)) | \
 	del(.definition.show_legend | select(. == false)) | \
 	."\(.definition.type)_definition" = .definition ) | \
