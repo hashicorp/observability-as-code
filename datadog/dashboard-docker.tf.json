@@ -4,7 +4,7 @@
       "docker": {
         "title": "Docker - eCommerce",
         "description": "Shows status of Docker containers related to the eCommerce Application",
-        "widgets": [
+        "widget": [
           {
             "id": 0,
             "definition": {
@@ -706,7 +706,7 @@
             }
           }
         ],
-        "template_variables": [
+        "template_variable": [
           {
             "name": "scope",
             "default": "*",
