@@ -6,7 +6,6 @@
         "description": "Shows status of Docker containers related to the eCommerce Application",
         "widget": [
           {
-            "id": 0,
             "definition": {
               "type": "timeseries",
               "requests": [
@@ -32,7 +31,6 @@
             }
           },
           {
-            "id": 1,
             "definition": {
               "type": "toplist",
               "requests": [
@@ -58,7 +56,6 @@
             }
           },
           {
-            "id": 2,
             "definition": {
               "type": "toplist",
               "requests": [
@@ -84,7 +81,6 @@
             }
           },
           {
-            "id": 3,
             "definition": {
               "type": "heatmap",
               "requests": [
@@ -109,7 +105,6 @@
             }
           },
           {
-            "id": 4,
             "definition": {
               "type": "query_value",
               "requests": [
@@ -136,7 +131,6 @@
             }
           },
           {
-            "id": 5,
             "definition": {
               "type": "query_value",
               "requests": [
@@ -163,7 +157,6 @@
             }
           },
           {
-            "id": 6,
             "definition": {
               "type": "heatmap",
               "requests": [
@@ -188,7 +181,6 @@
             }
           },
           {
-            "id": 7,
             "definition": {
               "type": "timeseries",
               "requests": [
@@ -217,7 +209,6 @@
             }
           },
           {
-            "id": 8,
             "definition": {
               "type": "timeseries",
               "requests": [
@@ -243,7 +234,6 @@
             }
           },
           {
-            "id": 9,
             "definition": {
               "type": "event_stream",
               "query": "sources:docker",
@@ -261,7 +251,6 @@
             }
           },
           {
-            "id": 10,
             "definition": {
               "type": "event_timeline",
               "query": "sources:docker",
@@ -278,7 +267,6 @@
             }
           },
           {
-            "id": 11,
             "definition": {
               "type": "query_value",
               "requests": [
@@ -323,7 +311,6 @@
             }
           },
           {
-            "id": 12,
             "definition": {
               "type": "timeseries",
               "requests": [
@@ -352,7 +339,6 @@
             }
           },
           {
-            "id": 13,
             "definition": {
               "type": "note",
               "content": "\n\nContainers",
@@ -371,7 +357,6 @@
             }
           },
           {
-            "id": 14,
             "definition": {
               "type": "timeseries",
               "requests": [
@@ -397,7 +382,6 @@
             }
           },
           {
-            "id": 15,
             "definition": {
               "type": "image",
               "url": "/static/images/screenboard/integrations/docker-logo-792x269.png",
@@ -411,7 +395,6 @@
             }
           },
           {
-            "id": 16,
             "definition": {
               "type": "note",
               "content": "[CPU Core Load](https://www.datadoghq.com/blog/how-to-monitor-docker-resource-metrics/#toc2)",
@@ -430,7 +413,6 @@
             }
           },
           {
-            "id": 17,
             "definition": {
               "type": "note",
               "content": "Memory",
@@ -449,7 +431,6 @@
             }
           },
           {
-            "id": 18,
             "definition": {
               "type": "timeseries",
               "requests": [
@@ -475,7 +456,6 @@
             }
           },
           {
-            "id": 19,
             "definition": {
               "type": "note",
               "content": "I/O",
@@ -494,7 +474,6 @@
             }
           },
           {
-            "id": 20,
             "definition": {
               "type": "timeseries",
               "requests": [
@@ -523,7 +502,6 @@
             }
           },
           {
-            "id": 21,
             "definition": {
               "type": "timeseries",
               "requests": [
@@ -552,7 +530,6 @@
             }
           },
           {
-            "id": 22,
             "definition": {
               "type": "note",
               "content": "Network",
@@ -571,7 +548,6 @@
             }
           },
           {
-            "id": 23,
             "definition": {
               "type": "timeseries",
               "requests": [
@@ -600,7 +576,6 @@
             }
           },
           {
-            "id": 24,
             "definition": {
               "type": "timeseries",
               "requests": [
@@ -629,7 +604,6 @@
             }
           },
           {
-            "id": 25,
             "definition": {
               "type": "toplist",
               "requests": [
@@ -655,7 +629,6 @@
             }
           },
           {
-            "id": 26,
             "definition": {
               "type": "heatmap",
               "requests": [
@@ -680,7 +653,6 @@
             }
           },
           {
-            "id": 27,
             "definition": {
               "type": "toplist",
               "requests": [
