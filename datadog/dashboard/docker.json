@@ -1,18 +1,11 @@
 {
   "title": "Docker - Overview (cloned)",
   "description": "The Docker dashboard enables you to get an overview of your cluster's status, including a view of how many containers are running per image over time, and a list of the top images that containers are running. Further reading on Docker monitoring:\n\n- [Datadog's Docker integration docs](https://docs.datadoghq.com/integrations/docker_daemon/) \n\n- [The Docker monitoring problem](https://www.datadoghq.com/blog/the-docker-monitoring-problem/)\n\n- [How to monitor Docker resource metrics](https://www.datadoghq.com/blog/how-to-monitor-docker-resource-metrics/)\n\n- [How iHeartRadio monitors Docker performance](https://www.datadoghq.com/blog/iheartradio-monitors-docker/)\n\n- [Monitor Docker performance with Datadog](https://www.datadoghq.com/blog/monitor-docker-datadog/)\n\nClone this template dashboard to make changes and add your own graph widgets.",
-  "layout_type": "free",
-  "is_read_only": false,
-  "notify_list": [],
-  "widget": [
+  "widgets": [
     {
-      "layout": {
-        "x": 68,
-        "y": 10,
-        "width": 50,
-        "height": 29
-      },
-      "timeseries_definition": {
+      "id": 0,
+      "definition": {
+        "type": "timeseries",
         "requests": [
           {
             "q": "sum:docker.containers.running{$scope} by {docker_image}.fill(0)",
@@ -27,16 +20,18 @@
         },
         "show_legend": false,
         "legend_size": "0"
+      },
+      "layout": {
+        "x": 68,
+        "y": 10,
+        "width": 50,
+        "height": 29
       }
     },
     {
-      "layout": {
-        "x": 52,
-        "y": 98,
-        "width": 51,
-        "height": 15
-      },
-      "toplist_definition": {
+      "id": 1,
+      "definition": {
+        "type": "toplist",
         "requests": [
           {
             "q": "top(avg:docker.mem.rss{$scope} by {container_name}, 5, 'max', 'desc')",
@@ -51,16 +46,18 @@
         "time": {
           "live_span": "1h"
         }
+      },
+      "layout": {
+        "x": 52,
+        "y": 98,
+        "width": 51,
+        "height": 15
       }
     },
     {
-      "layout": {
-        "x": 0,
-        "y": 82,
-        "width": 51,
-        "height": 15
-      },
-      "toplist_definition": {
+      "id": 2,
+      "definition": {
+        "type": "toplist",
         "requests": [
           {
             "q": "top(avg:docker.cpu.user{$scope} by {container_name}, 5, 'max', 'desc')",
@@ -75,16 +72,18 @@
         "time": {
           "live_span": "1h"
         }
+      },
+      "layout": {
+        "x": 0,
+        "y": 82,
+        "width": 51,
+        "height": 15
       }
     },
     {
-      "layout": {
-        "x": 52,
-        "y": 114,
-        "width": 51,
-        "height": 15
-      },
-      "heatmap_definition": {
+      "id": 3,
+      "definition": {
+        "type": "heatmap",
         "requests": [
           {
             "q": "avg:docker.mem.rss{$scope} by {container_name}"
@@ -98,16 +97,18 @@
         "time": {
           "live_span": "1h"
         }
+      },
+      "layout": {
+        "x": 52,
+        "y": 114,
+        "width": 51,
+        "height": 15
       }
     },
     {
-      "layout": {
-        "x": 89,
-        "y": 0,
-        "width": 14,
-        "height": 9
-      },
-      "query_value_definition": {
+      "id": 4,
+      "definition": {
+        "type": "query_value",
         "requests": [
           {
             "q": "sum:docker.containers.running{$scope}",
@@ -123,16 +124,18 @@
         "autoscale": true,
         "precision": 0,
         "text_align": "center"
-      }
-    },
-    {
+      },
       "layout": {
-        "x": 104,
+        "x": 89,
         "y": 0,
         "width": 14,
         "height": 9
-      },
-      "query_value_definition": {
+      }
+    },
+    {
+      "id": 5,
+      "definition": {
+        "type": "query_value",
         "requests": [
           {
             "q": "sum:docker.containers.stopped{$scope}",
@@ -148,16 +151,18 @@
         "autoscale": true,
         "precision": 0,
         "text_align": "center"
+      },
+      "layout": {
+        "x": 104,
+        "y": 0,
+        "width": 14,
+        "height": 9
       }
     },
     {
-      "layout": {
-        "x": 0,
-        "y": 98,
-        "width": 51,
-        "height": 15
-      },
-      "heatmap_definition": {
+      "id": 6,
+      "definition": {
+        "type": "heatmap",
         "requests": [
           {
             "q": "avg:docker.cpu.user{$scope} by {container_name}"
@@ -171,16 +176,18 @@
         "time": {
           "live_span": "1h"
         }
+      },
+      "layout": {
+        "x": 0,
+        "y": 98,
+        "width": 51,
+        "height": 15
       }
     },
     {
-      "layout": {
-        "x": 0,
-        "y": 50,
-        "width": 51,
-        "height": 15
-      },
-      "timeseries_definition": {
+      "id": 7,
+      "definition": {
+        "type": "timeseries",
         "requests": [
           {
             "q": "avg:docker.cpu.user{$scope} by {docker_image}.fill(0)",
@@ -198,16 +205,18 @@
         },
         "show_legend": false,
         "legend_size": "0"
-      }
-    },
-    {
+      },
       "layout": {
-        "x": 52,
+        "x": 0,
         "y": 50,
         "width": 51,
         "height": 15
-      },
-      "timeseries_definition": {
+      }
+    },
+    {
+      "id": 8,
+      "definition": {
+        "type": "timeseries",
         "requests": [
           {
             "q": "avg:docker.mem.rss{$scope} by {docker_image}.fill(0)",
@@ -222,47 +231,53 @@
         },
         "show_legend": false,
         "legend_size": "0"
+      },
+      "layout": {
+        "x": 52,
+        "y": 50,
+        "width": 51,
+        "height": 15
       }
     },
     {
-      "layout": {
-        "x": 0,
-        "y": 17,
-        "width": 51,
-        "height": 24
-      },
-      "event_stream_definition": {
+      "id": 9,
+      "definition": {
+        "type": "event_stream",
         "query": "sources:docker",
         "tags_execution": "and",
         "event_size": "s",
         "time": {
           "live_span": "1d"
         }
+      },
+      "layout": {
+        "x": 0,
+        "y": 17,
+        "width": 51,
+        "height": 24
       }
     },
     {
-      "layout": {
-        "x": 0,
-        "y": 8,
-        "width": 51,
-        "height": 9
-      },
-      "event_timeline_definition": {
+      "id": 10,
+      "definition": {
+        "type": "event_timeline",
         "query": "sources:docker",
         "tags_execution": "and",
         "time": {
           "live_span": "1d"
         }
+      },
+      "layout": {
+        "x": 0,
+        "y": 8,
+        "width": 51,
+        "height": 9
       }
     },
     {
-      "layout": {
-        "x": 68,
-        "y": 0,
-        "width": 20,
-        "height": 9
-      },
-      "query_value_definition": {
+      "id": 11,
+      "definition": {
+        "type": "query_value",
         "requests": [
           {
             "q": "100*(sum:docker.containers.running{$scope}/timeshift(sum:docker.containers.running{$scope}, -300))",
@@ -296,16 +311,18 @@
         "custom_unit": "%",
         "precision": 0,
         "text_align": "center"
+      },
+      "layout": {
+        "x": 68,
+        "y": 0,
+        "width": 20,
+        "height": 9
       }
     },
     {
-      "layout": {
-        "x": 0,
-        "y": 66,
-        "width": 51,
-        "height": 15
-      },
-      "timeseries_definition": {
+      "id": 12,
+      "definition": {
+        "type": "timeseries",
         "requests": [
           {
             "q": "avg:docker.cpu.system{$scope} by {docker_image}.fill(0)",
@@ -323,16 +340,18 @@
         },
         "show_legend": false,
         "legend_size": "0"
+      },
+      "layout": {
+        "x": 0,
+        "y": 66,
+        "width": 51,
+        "height": 15
       }
     },
     {
-      "layout": {
-        "x": 52,
-        "y": 0,
-        "width": 14,
-        "height": 39
-      },
-      "note_definition": {
+      "id": 13,
+      "definition": {
+        "type": "note",
         "content": "\n\nContainers",
         "background_color": "blue",
         "font_size": "24",
@@ -340,16 +359,18 @@
         "show_tick": true,
         "tick_pos": "50%",
         "tick_edge": "right"
+      },
+      "layout": {
+        "x": 52,
+        "y": 0,
+        "width": 14,
+        "height": 39
       }
     },
     {
-      "layout": {
-        "x": 52,
-        "y": 82,
-        "width": 51,
-        "height": 15
-      },
-      "timeseries_definition": {
+      "id": 14,
+      "definition": {
+        "type": "timeseries",
         "requests": [
           {
             "q": "sum:docker.mem.cache{$scope} by {docker_image}",
@@ -364,28 +385,32 @@
         },
         "show_legend": false,
         "legend_size": "0"
+      },
+      "layout": {
+        "x": 52,
+        "y": 82,
+        "width": 51,
+        "height": 15
       }
     },
     {
+      "id": 15,
+      "definition": {
+        "type": "image",
+        "url": "/static/images/screenboard/integrations/docker-logo-792x269.png",
+        "sizing": "fit"
+      },
       "layout": {
         "x": 0,
         "y": 0,
         "width": 51,
         "height": 8
-      },
-      "image_definition": {
-        "url": "/static/images/screenboard/integrations/docker-logo-792x269.png",
-        "sizing": "fit"
       }
     },
     {
-      "layout": {
-        "x": 0,
-        "y": 42,
-        "width": 51,
-        "height": 6
-      },
-      "note_definition": {
+      "id": 16,
+      "definition": {
+        "type": "note",
         "content": "[CPU Core Load](https://www.datadoghq.com/blog/how-to-monitor-docker-resource-metrics/#toc2)",
         "background_color": "blue",
         "font_size": "24",
@@ -393,16 +418,18 @@
         "show_tick": true,
         "tick_pos": "50%",
         "tick_edge": "bottom"
-      }
-    },
-    {
+      },
       "layout": {
-        "x": 52,
+        "x": 0,
         "y": 42,
         "width": 51,
         "height": 6
-      },
-      "note_definition": {
+      }
+    },
+    {
+      "id": 17,
+      "definition": {
+        "type": "note",
         "content": "Memory",
         "background_color": "blue",
         "font_size": "24",
@@ -410,16 +437,18 @@
         "show_tick": true,
         "tick_pos": "50%",
         "tick_edge": "bottom"
+      },
+      "layout": {
+        "x": 52,
+        "y": 42,
+        "width": 51,
+        "height": 6
       }
     },
     {
-      "layout": {
-        "x": 52,
-        "y": 66,
-        "width": 51,
-        "height": 15
-      },
-      "timeseries_definition": {
+      "id": 18,
+      "definition": {
+        "type": "timeseries",
         "requests": [
           {
             "q": "avg:docker.mem.swap{$scope} by {docker_image}",
@@ -434,16 +463,18 @@
         },
         "show_legend": false,
         "legend_size": "0"
+      },
+      "layout": {
+        "x": 52,
+        "y": 66,
+        "width": 51,
+        "height": 15
       }
     },
     {
-      "layout": {
-        "x": 156,
-        "y": 42,
-        "width": 51,
-        "height": 6
-      },
-      "note_definition": {
+      "id": 19,
+      "definition": {
+        "type": "note",
         "content": "I/O",
         "background_color": "blue",
         "font_size": "24",
@@ -451,16 +482,18 @@
         "show_tick": true,
         "tick_pos": "50%",
         "tick_edge": "bottom"
+      },
+      "layout": {
+        "x": 156,
+        "y": 42,
+        "width": 51,
+        "height": 6
       }
     },
     {
-      "layout": {
-        "x": 156,
-        "y": 50,
-        "width": 51,
-        "height": 15
-      },
-      "timeseries_definition": {
+      "id": 20,
+      "definition": {
+        "type": "timeseries",
         "requests": [
           {
             "q": "avg:docker.io.read_bytes{$scope} by {docker_image}",
@@ -478,16 +511,18 @@
         },
         "show_legend": false,
         "legend_size": "0"
+      },
+      "layout": {
+        "x": 156,
+        "y": 50,
+        "width": 51,
+        "height": 15
       }
     },
     {
-      "layout": {
-        "x": 156,
-        "y": 66,
-        "width": 51,
-        "height": 15
-      },
-      "timeseries_definition": {
+      "id": 21,
+      "definition": {
+        "type": "timeseries",
         "requests": [
           {
             "q": "avg:docker.io.write_bytes{$scope} by {docker_image}",
@@ -505,16 +540,18 @@
         },
         "show_legend": false,
         "legend_size": "0"
+      },
+      "layout": {
+        "x": 156,
+        "y": 66,
+        "width": 51,
+        "height": 15
       }
     },
     {
-      "layout": {
-        "x": 104,
-        "y": 42,
-        "width": 51,
-        "height": 6
-      },
-      "note_definition": {
+      "id": 22,
+      "definition": {
+        "type": "note",
         "content": "Network",
         "background_color": "blue",
         "font_size": "24",
@@ -522,16 +559,18 @@
         "show_tick": true,
         "tick_pos": "50%",
         "tick_edge": "bottom"
+      },
+      "layout": {
+        "x": 104,
+        "y": 42,
+        "width": 51,
+        "height": 6
       }
     },
     {
-      "layout": {
-        "x": 104,
-        "y": 50,
-        "width": 51,
-        "height": 15
-      },
-      "timeseries_definition": {
+      "id": 23,
+      "definition": {
+        "type": "timeseries",
         "requests": [
           {
             "q": "avg:docker.net.bytes_rcvd{$scope} by {docker_image}",
@@ -549,16 +588,18 @@
         },
         "show_legend": false,
         "legend_size": "0"
+      },
+      "layout": {
+        "x": 104,
+        "y": 50,
+        "width": 51,
+        "height": 15
       }
     },
     {
-      "layout": {
-        "x": 104,
-        "y": 66,
-        "width": 51,
-        "height": 15
-      },
-      "timeseries_definition": {
+      "id": 24,
+      "definition": {
+        "type": "timeseries",
         "requests": [
           {
             "q": "avg:docker.net.bytes_sent{$scope} by {docker_image}",
@@ -576,16 +617,18 @@
         },
         "show_legend": false,
         "legend_size": "0"
+      },
+      "layout": {
+        "x": 104,
+        "y": 66,
+        "width": 51,
+        "height": 15
       }
     },
     {
-      "layout": {
-        "x": 104,
-        "y": 82,
-        "width": 51,
-        "height": 15
-      },
-      "toplist_definition": {
+      "id": 25,
+      "definition": {
+        "type": "toplist",
         "requests": [
           {
             "q": "top(avg:docker.net.bytes_sent{$scope} by {container_name}, 5, 'max', 'desc')",
@@ -600,16 +643,18 @@
         "time": {
           "live_span": "1h"
         }
+      },
+      "layout": {
+        "x": 104,
+        "y": 82,
+        "width": 51,
+        "height": 15
       }
     },
     {
-      "layout": {
-        "x": 104,
-        "y": 98,
-        "width": 51,
-        "height": 15
-      },
-      "heatmap_definition": {
+      "id": 26,
+      "definition": {
+        "type": "heatmap",
         "requests": [
           {
             "q": "avg:docker.net.bytes_sent{$scope} by {container_name}"
@@ -623,16 +668,18 @@
         "time": {
           "live_span": "1h"
         }
+      },
+      "layout": {
+        "x": 104,
+        "y": 98,
+        "width": 51,
+        "height": 15
       }
     },
     {
-      "layout": {
-        "x": 119,
-        "y": 0,
-        "width": 36,
-        "height": 39
-      },
-      "toplist_definition": {
+      "id": 27,
+      "definition": {
+        "type": "toplist",
         "requests": [
           {
             "q": "timeshift(top(sum:docker.containers.running{$scope} by {docker_image}.fill(60), 20, 'last', 'desc'),40)",
@@ -647,14 +694,24 @@
         "time": {
           "live_span": "1h"
         }
+      },
+      "layout": {
+        "x": 119,
+        "y": 0,
+        "width": 36,
+        "height": 39
       }
     }
   ],
-  "template_variable": [
+  "template_variables": [
     {
       "name": "scope",
       "default": "*",
       "prefix": null
     }
-  ]
+  ],
+  "layout_type": "free",
+  "is_read_only": false,
+  "notify_list": [],
+  "id": "9n3-tc4-a58"
 }
