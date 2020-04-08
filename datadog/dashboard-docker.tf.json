@@ -16,12 +16,6 @@
               "height": 29
             },
             "timeseries_definition": {
-              "requests": [
-                {
-                  "q": "sum:docker.containers.running{$scope} by {docker_image}.fill(0)",
-                  "display_type": "bars"
-                }
-              ],
               "title": "Running containers by image",
               "title_size": "16",
               "title_align": "left",
@@ -44,14 +38,6 @@
               "height": 15
             },
             "toplist_definition": {
-              "requests": [
-                {
-                  "q": "top(avg:docker.mem.rss{$scope} by {container_name}, 5, 'max', 'desc')",
-                  "style": {
-                    "palette": "dog_classic"
-                  }
-                }
-              ],
               "title": "Most RAM-intensive containers",
               "title_size": "16",
               "title_align": "left",
@@ -76,14 +62,6 @@
               "height": 15
             },
             "toplist_definition": {
-              "requests": [
-                {
-                  "q": "top(avg:docker.cpu.user{$scope} by {container_name}, 5, 'max', 'desc')",
-                  "style": {
-                    "palette": "cool"
-                  }
-                }
-              ],
               "title": "Most CPU-intensive containers",
               "title_size": "16",
               "title_align": "left",
@@ -108,11 +86,6 @@
               "height": 15
             },
             "heatmap_definition": {
-              "requests": [
-                {
-                  "q": "avg:docker.mem.rss{$scope} by {container_name}"
-                }
-              ],
               "title": "Memory by container",
               "title_size": "16",
               "title_align": "left",
@@ -134,12 +107,6 @@
               "height": 9
             },
             "query_value_definition": {
-              "requests": [
-                {
-                  "q": "sum:docker.containers.running{$scope}",
-                  "aggregator": "last"
-                }
-              ],
               "title": "Running containers",
               "title_size": "16",
               "title_align": "center",
@@ -165,12 +132,6 @@
               "height": 9
             },
             "query_value_definition": {
-              "requests": [
-                {
-                  "q": "sum:docker.containers.stopped{$scope}",
-                  "aggregator": "last"
-                }
-              ],
               "title": "Stopped containers",
               "title_size": "16",
               "title_align": "center",
@@ -196,11 +157,6 @@
               "height": 15
             },
             "heatmap_definition": {
-              "requests": [
-                {
-                  "q": "avg:docker.cpu.user{$scope} by {container_name}"
-                }
-              ],
               "title": "CPU by container",
               "title_size": "16",
               "title_align": "left",
@@ -222,15 +178,6 @@
               "height": 15
             },
             "timeseries_definition": {
-              "requests": [
-                {
-                  "q": "avg:docker.cpu.user{$scope} by {docker_image}.fill(0)",
-                  "display_type": "line",
-                  "style": {
-                    "palette": "cool"
-                  }
-                }
-              ],
               "title": "CPU user by image",
               "title_size": "16",
               "title_align": "left",
@@ -256,12 +203,6 @@
               "height": 15
             },
             "timeseries_definition": {
-              "requests": [
-                {
-                  "q": "avg:docker.mem.rss{$scope} by {docker_image}.fill(0)",
-                  "display_type": "line"
-                }
-              ],
               "title": "RSS memory by image",
               "title_size": "16",
               "title_align": "left",
@@ -315,29 +256,6 @@
               "height": 9
             },
             "query_value_definition": {
-              "requests": [
-                {
-                  "q": "100*(sum:docker.containers.running{$scope}/timeshift(sum:docker.containers.running{$scope}, -300))",
-                  "aggregator": "last",
-                  "conditional_formats": [
-                    {
-                      "comparator": ">=",
-                      "value": 80,
-                      "palette": "white_on_green"
-                    },
-                    {
-                      "comparator": ">",
-                      "value": 50,
-                      "palette": "white_on_yellow"
-                    },
-                    {
-                      "comparator": ">=",
-                      "value": 0,
-                      "palette": "white_on_red"
-                    }
-                  ]
-                }
-              ],
               "title": "Running container change",
               "title_size": "16",
               "title_align": "center",
@@ -381,15 +299,6 @@
               "height": 15
             },
             "timeseries_definition": {
-              "requests": [
-                {
-                  "q": "avg:docker.cpu.system{$scope} by {docker_image}.fill(0)",
-                  "display_type": "line",
-                  "style": {
-                    "palette": "cool"
-                  }
-                }
-              ],
               "title": "CPU system by image",
               "title_size": "16",
               "title_align": "left",
@@ -432,12 +341,6 @@
               "height": 15
             },
             "timeseries_definition": {
-              "requests": [
-                {
-                  "q": "sum:docker.mem.cache{$scope} by {docker_image}",
-                  "display_type": "line"
-                }
-              ],
               "title": "Cache memory by image",
               "title_size": "16",
               "title_align": "left",
@@ -506,12 +409,6 @@
               "height": 15
             },
             "timeseries_definition": {
-              "requests": [
-                {
-                  "q": "avg:docker.mem.swap{$scope} by {docker_image}",
-                  "display_type": "line"
-                }
-              ],
               "title": "Swap by image",
               "title_size": "16",
               "title_align": "left",
@@ -551,15 +448,6 @@
               "height": 15
             },
             "timeseries_definition": {
-              "requests": [
-                {
-                  "q": "avg:docker.io.read_bytes{$scope} by {docker_image}",
-                  "display_type": "area",
-                  "style": {
-                    "palette": "dog_classic"
-                  }
-                }
-              ],
               "title": "Avg. I/O bytes read by image",
               "title_size": "16",
               "title_align": "left",
@@ -585,15 +473,6 @@
               "height": 15
             },
             "timeseries_definition": {
-              "requests": [
-                {
-                  "q": "avg:docker.io.write_bytes{$scope} by {docker_image}",
-                  "display_type": "area",
-                  "style": {
-                    "palette": "dog_classic"
-                  }
-                }
-              ],
               "title": "Avg. I/O bytes written by image",
               "title_size": "16",
               "title_align": "left",
@@ -636,15 +515,6 @@
               "height": 15
             },
             "timeseries_definition": {
-              "requests": [
-                {
-                  "q": "avg:docker.net.bytes_rcvd{$scope} by {docker_image}",
-                  "display_type": "area",
-                  "style": {
-                    "palette": "cool"
-                  }
-                }
-              ],
               "title": "Avg. rx bytes by image",
               "title_size": "16",
               "title_align": "left",
@@ -670,15 +540,6 @@
               "height": 15
             },
             "timeseries_definition": {
-              "requests": [
-                {
-                  "q": "avg:docker.net.bytes_sent{$scope} by {docker_image}",
-                  "display_type": "area",
-                  "style": {
-                    "palette": "purple"
-                  }
-                }
-              ],
               "title": "Avg. tx bytes by image",
               "title_size": "16",
               "title_align": "left",
@@ -704,14 +565,6 @@
               "height": 15
             },
             "toplist_definition": {
-              "requests": [
-                {
-                  "q": "top(avg:docker.net.bytes_sent{$scope} by {container_name}, 5, 'max', 'desc')",
-                  "style": {
-                    "palette": "purple"
-                  }
-                }
-              ],
               "title": "Most tx-intensive containers",
               "title_size": "16",
               "title_align": "left",
@@ -736,11 +589,6 @@
               "height": 15
             },
             "heatmap_definition": {
-              "requests": [
-                {
-                  "q": "avg:docker.net.bytes_sent{$scope} by {container_name}"
-                }
-              ],
               "title": "tx by container",
               "title_size": "16",
               "title_align": "left",
@@ -762,14 +610,6 @@
               "height": 39
             },
             "toplist_definition": {
-              "requests": [
-                {
-                  "q": "timeshift(top(sum:docker.containers.running{$scope} by {docker_image}.fill(60), 20, 'last', 'desc'),40)",
-                  "style": {
-                    "palette": "dog_classic"
-                  }
-                }
-              ],
               "title": "Running containers by image",
               "title_size": "16",
               "title_align": "left",
