@@ -18,8 +18,7 @@
         "time": {
           "live_span": "1h"
         },
-        "show_legend": false,
-        "legend_size": "0"
+        "show_legend": false
       },
       "layout": {
         "x": 68,
@@ -92,8 +91,6 @@
         "title": "Memory by container",
         "title_size": "16",
         "title_align": "left",
-        "show_legend": false,
-        "legend_size": "0",
         "time": {
           "live_span": "1h"
         }
@@ -171,8 +168,6 @@
         "title": "CPU by container",
         "title_size": "16",
         "title_align": "left",
-        "show_legend": false,
-        "legend_size": "0",
         "time": {
           "live_span": "1h"
         }
@@ -203,8 +198,7 @@
         "time": {
           "live_span": "1h"
         },
-        "show_legend": false,
-        "legend_size": "0"
+        "show_legend": false
       },
       "layout": {
         "x": 0,
@@ -229,8 +223,7 @@
         "time": {
           "live_span": "1h"
         },
-        "show_legend": false,
-        "legend_size": "0"
+        "show_legend": false
       },
       "layout": {
         "x": 52,
@@ -286,17 +279,20 @@
               {
                 "comparator": ">=",
                 "value": 80,
-                "palette": "white_on_green"
+                "palette": "white_on_green",
+                "hide_value": false
               },
               {
                 "comparator": ">",
                 "value": 50,
-                "palette": "white_on_yellow"
+                "palette": "white_on_yellow",
+                "hide_value": false
               },
               {
                 "comparator": ">=",
                 "value": 0,
-                "palette": "white_on_red"
+                "palette": "white_on_red",
+                "hide_value": false
               }
             ]
           }
@@ -338,8 +334,7 @@
         "time": {
           "live_span": "1h"
         },
-        "show_legend": false,
-        "legend_size": "0"
+        "show_legend": false
       },
       "layout": {
         "x": 0,
@@ -383,8 +378,7 @@
         "time": {
           "live_span": "1h"
         },
-        "show_legend": false,
-        "legend_size": "0"
+        "show_legend": false
       },
       "layout": {
         "x": 52,
@@ -461,8 +455,7 @@
         "time": {
           "live_span": "1h"
         },
-        "show_legend": false,
-        "legend_size": "0"
+        "show_legend": false
       },
       "layout": {
         "x": 52,
@@ -509,8 +502,7 @@
         "time": {
           "live_span": "1h"
         },
-        "show_legend": false,
-        "legend_size": "0"
+        "show_legend": false
       },
       "layout": {
         "x": 156,
@@ -538,8 +530,7 @@
         "time": {
           "live_span": "1h"
         },
-        "show_legend": false,
-        "legend_size": "0"
+        "show_legend": false
       },
       "layout": {
         "x": 156,
@@ -586,8 +577,7 @@
         "time": {
           "live_span": "1h"
         },
-        "show_legend": false,
-        "legend_size": "0"
+        "show_legend": false
       },
       "layout": {
         "x": 104,
@@ -615,8 +605,7 @@
         "time": {
           "live_span": "1h"
         },
-        "show_legend": false,
-        "legend_size": "0"
+        "show_legend": false
       },
       "layout": {
         "x": 104,
@@ -663,8 +652,6 @@
         "title": "tx by container",
         "title_size": "16",
         "title_align": "left",
-        "show_legend": false,
-        "legend_size": "0",
         "time": {
           "live_span": "1h"
         }
@@ -682,7 +669,7 @@
         "type": "toplist",
         "requests": [
           {
-            "q": "timeshift(top(sum:docker.containers.running{$scope} by {docker_image}.fill(60), 20, 'last', 'desc'),40)",
+            "q": "timeshift(top(sum:docker.containers.running{$scope} by {docker_image}.fill(60), 20, 'last', 'desc'), 40)",
             "style": {
               "palette": "dog_classic"
             }
@@ -707,11 +694,11 @@
     {
       "name": "scope",
       "default": "*",
-      "prefix": null
+      "prefix": "short_image"
     }
   ],
   "layout_type": "free",
   "is_read_only": false,
   "notify_list": [],
-  "id": "9n3-tc4-a58"
+  "id": "dki-wm7-kd3"
 }
