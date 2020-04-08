@@ -628,7 +628,7 @@
         "template_variable": [
           {
             "name": "scope",
-            "default": "*",
+            "default": "container_name:docker-compose-files-*",
             "prefix": null
           }
         ]
