@@ -1,2 +1,2 @@
-transform-dashboard:
-	jq '.["widget"] = .widgets | .["template_variable"] = .template_variables | .widget |= map((. | ."\(.definition.type)_definition" = .definition) | del(."\(.definition.type)_definition".type) // .) | del(.widgets, .template_variables, .widget[].definition, .widget[].id, .id)' dashboard/docker.json > dashboard-docker.tf.json
+docker-dashboard:
+	jq '.resource.datadog_dashboard.docker = (.widget = .widgets | .template_variable = .template_variables | .widget |= map((. | ."\(.definition.type)_definition" = .definition) | del(."\(.definition.type)_definition".type) // .) | del(.widget[].definition, .widget[].id)) | del(.title, .description, .layout_type, .is_read_only, .notify_list, .id, .widgets, .template_variables)' dashboard/docker.json > dashboard-docker.tf.json
