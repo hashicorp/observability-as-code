@@ -6,5 +6,5 @@ for configuring dashboards, monitors, and tracing.
 
 ## Prerequisites
 
-* [Datadog Account](https://www.datadoghq.com/)
+* [Datadog Account](https://app.datadoghq.com/signup)
 * [Terraform Cloud Account](https://app.terraform.io/signup/account)
