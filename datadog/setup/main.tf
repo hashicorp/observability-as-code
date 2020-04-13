@@ -13,15 +13,15 @@ data "google_compute_network" "default" {
   name = "default"
 }
 
-resource "google_compute_firewall" "ecommerce" {
-  name    = "allow-ecommerce"
-  network = "default"
+// resource "google_compute_firewall" "ecommerce" {
+//   name    = "allow-ecommerce"
+//   network = "default"
 
-  allow {
-    protocol = "tcp"
-    ports    = ["3000"]
-  }
-}
+//   allow {
+//     protocol = "tcp"
+//     ports    = ["3000"]
+//   }
+// }
 
 resource "google_compute_instance" "default" {
   name         = "datadog-webinar-ecommerce"
