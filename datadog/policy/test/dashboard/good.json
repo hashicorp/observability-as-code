@@ -1,0 +1,5 @@
+{
+  "mock": {
+    "tfplan/v2": "../testdata/mock-tfplan-v2.sentinel"
+  }
+}

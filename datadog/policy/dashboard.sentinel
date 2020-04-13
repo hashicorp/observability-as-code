@@ -1,0 +1,15 @@
+import "tfplan/v2" as tfplan
+
+resources = values(tfplan.planned_values.resources)
+
+dashboards = filter resources as _, v { v.type is "datadog_dashboard" }
+
+all_dashboards_are_read_only = rule {
+	all dashboards as dashboard {
+		dashboard.values.is_read_only
+	}
+}
+
+main = rule {
+	all_dashboards_are_read_only
+}
