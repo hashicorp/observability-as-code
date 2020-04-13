@@ -2,8 +2,8 @@
   "resource": {
     "datadog_dashboard": {
       "docker": {
-        "title": "Docker - eCommerce",
-        "description": "For containers related to eCommerce",
+        "title": "Docker - ${var.service} Containers",
+        "description": "For containers related to ${var.service} service",
         "layout_type": "free",
         "is_read_only": false,
         "notify_list": [],
