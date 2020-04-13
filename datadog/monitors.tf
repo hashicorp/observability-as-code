@@ -1,11 +1,11 @@
 resource "datadog_monitor" "apm" {
   for_each           = var.services
-  name               = "Service ${each.key} has a high error rate"
+  name               = "Service ${each.value.name} has a high error rate"
   type               = "query alert"
-  message            = "Service ${each.key} has a high error rate. @${each.key}"
-  escalation_message = "Service ${each.key} has a high error rate. @${each.key}"
+  message            = "Service ${each.value.name} has a high error rate. @${each.value.name}"
+  escalation_message = "Service ${each.value.name} has a high error rate. @${each.value.name}"
 
-  query = "avg(last_10m):sum:trace.rack.request.errors{env:${var.environment},service:${each.key} } / sum:trace.rack.request.hits{env:${var.environment},service:${each.key} } > ${each.value.critical}"
+  query = "avg(last_10m):sum:trace.rack.request.errors{env:${var.environment},service:${each.value.name} } / sum:trace.rack.request.hits{env:${var.environment},service:${each.value.name} } > ${each.value.critical}"
 
   thresholds = {
     warning  = each.value.warning
@@ -19,5 +19,5 @@ resource "datadog_monitor" "apm" {
   timeout_h    = 0
   include_tags = true
 
-  tags = ["service:${each.key}", "env:${var.environment}"]
+  tags = ["service:${each.value.name}", "env:${var.environment}"]
 }
