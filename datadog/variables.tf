@@ -9,6 +9,6 @@ variable "environment" {
 }
 
 variable "services" {
-  type        = list(object({ name = string, critical = number, warning = number }))
+  type        = map(object({ critical = number, warning = number }))
   description = "Services and query alert thresholds"
 }
