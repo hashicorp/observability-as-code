@@ -2,8 +2,8 @@
   "resource": {
     "datadog_dashboard": {
       "docker": {
-        "title": "Docker - ${var.service} Containers",
-        "description": "For containers related to ${var.service} service",
+        "title": "Docker - ${var.application} Containers",
+        "description": "For containers related to ${var.application} service",
         "layout_type": "free",
         "is_read_only": false,
         "notify_list": [],

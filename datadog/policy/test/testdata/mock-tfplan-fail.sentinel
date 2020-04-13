@@ -4613,7 +4613,7 @@ raw = {
 					"expressions": {
 						"description": {
 							"references": [
-								"var.service",
+								"var.application",
 							],
 						},
 						"is_read_only": {
@@ -4640,7 +4640,7 @@ raw = {
 						],
 						"title": {
 							"references": [
-								"var.service",
+								"var.application",
 							],
 						},
 						"widget": [
