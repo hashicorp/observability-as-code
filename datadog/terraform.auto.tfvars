@@ -2,7 +2,7 @@ application = "eCommerce"
 environment = "ruby-shop"
 services = [
   {
-    "name" : "store-frontend"
+    "name": "frontend-service"
     "critical" : 10,
     "warning" : 8
   }

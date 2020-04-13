@@ -10,5 +10,5 @@ variable "environment" {
 
 variable "services" {
   type        = list(object({ name = string, critical = number, warning = number }))
-  description = "List of services and query alert thresholds"
+  description = "Services and query alert thresholds"
 }
