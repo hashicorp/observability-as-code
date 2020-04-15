@@ -1,0 +1,14 @@
+[Unit]
+Description=GOR for Datadog
+After=local-fs.target network-online.target network.target rsyslog.service
+After=google-instance-setup.service google-network-setup.service
+Wants=local-fs.target network-online.target network.target
+
+[Service]
+WorkingDirectory=/root/ecommerce-workshop
+ExecStart=/usr/local/bin/gor --input-file-loop --input-file requests_0.gor --output-http http://localhost:3000
+KillMode=process
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
