@@ -36,7 +36,11 @@ locals {
   docker_compose = var.fix_frontend ? "fixed" : "broken"
 }
 
-resource "google_compute_instance" "default" {
+resource "google_compute_address" "ecommerce" {
+  name = "datadog-webinar-ecommerce"
+}
+
+resource "google_compute_instance" "ecommerce" {
   name         = "datadog-webinar-ecommerce"
   machine_type = "n1-standard-1"
   zone         = "us-central1-a"
@@ -53,7 +57,7 @@ resource "google_compute_instance" "default" {
     network = "default"
 
     access_config {
-      // Ephemeral IP
+      nat_ip = google_compute_address.ecommerce.address
     }
   }
 
@@ -74,5 +78,5 @@ resource "google_compute_instance" "default" {
 }
 
 output "ecommerce" {
-  value = google_compute_instance.default.network_interface.0.access_config.0.nat_ip
+  value = google_compute_instance.ecommerce.network_interface.0.access_config.0.nat_ip
 }
