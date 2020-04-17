@@ -1,7 +1,7 @@
 policy "dashboard" {
-    enforcement_level = "soft-mandatory"
+    enforcement_level = "advisory"
 }
 
 policy "monitor" {
-    enforcement_level = "soft-mandatory"
+    enforcement_level = "advisory"
 }
