@@ -1535,13 +1535,85 @@ planned_values = {
 				"subdomain": "ddog",
 			},
 		},
+		"datadog_integration_pagerduty_service_object.ecommerce[\"store-frontend\"]": {
+			"address":        "datadog_integration_pagerduty_service_object.ecommerce[\"store-frontend\"]",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          "store-frontend",
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "ecommerce",
+			"provider_name":  "datadog",
+			"tainted":        false,
+			"type":           "datadog_integration_pagerduty_service_object",
+			"values": {
+				"id":           "store-frontend",
+				"service_key":  "54321098765432109876",
+				"service_name": "store-frontend",
+			},
+		},
+		"datadog_monitor.apm[\"store-frontend\"]": {
+			"address":        "datadog_monitor.apm[\"store-frontend\"]",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          "store-frontend",
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "apm",
+			"provider_name":  "datadog",
+			"tainted":        false,
+			"type":           "datadog_monitor",
+			"values": {
+				"enable_logs_sample":  null,
+				"escalation_message":  "Service store-frontend has a high error rate. @store-frontend",
+				"evaluation_delay":    0,
+				"id":                  "17705837",
+				"include_tags":        true,
+				"locked":              false,
+				"message":             "Service store-frontend has a high error rate. @store-frontend",
+				"name":                "Service store-frontend has a high error rate",
+				"new_host_delay":      300,
+				"no_data_timeframe":   0,
+				"notify_audit":        false,
+				"notify_no_data":      false,
+				"query":               "avg(last_10m):sum:trace.rack.request.errors{env:ruby-shop,service:store-frontend } / sum:trace.rack.request.hits{env:ruby-shop,service:store-frontend } > 10",
+				"renotify_interval":   0,
+				"require_full_window": true,
+				"silenced":            {},
+				"tags": [
+					"env:ruby-shop",
+					"service:store-frontend",
+				],
+				"threshold_windows": {},
+				"thresholds": {
+					"critical": "10.0",
+					"warning":  "8.0",
+				},
+				"timeout_h": 0,
+				"type":      "query alert",
+			},
+		},
 	},
 }
 
 variables = {
-	"service": {
-		"name":  "service",
+	"application": {
+		"name":  "application",
 		"value": "eCommerce",
+	},
+	"environment": {
+		"name":  "environment",
+		"value": "ruby-shop",
+	},
+	"services": {
+		"name": "services",
+		"value": {
+			"store-frontend": {
+				"critical":       10,
+				"pd_service_key": "54321098765432109876",
+				"warning":        8,
+			},
+		},
 	},
 }
 
@@ -4594,6 +4666,106 @@ resource_changes = {
 		"provider_name":  "datadog",
 		"type":           "datadog_integration_pagerduty",
 	},
+	"datadog_integration_pagerduty_service_object.ecommerce[\"store-frontend\"]": {
+		"address": "datadog_integration_pagerduty_service_object.ecommerce[\"store-frontend\"]",
+		"change": {
+			"actions": [
+				"no-op",
+			],
+			"after": {
+				"id":           "store-frontend",
+				"service_key":  "54321098765432109876",
+				"service_name": "store-frontend",
+			},
+			"after_unknown": {},
+			"before": {
+				"id":           "store-frontend",
+				"service_key":  "54321098765432109876",
+				"service_name": "store-frontend",
+			},
+		},
+		"deposed":        "",
+		"index":          "store-frontend",
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "ecommerce",
+		"provider_name":  "datadog",
+		"type":           "datadog_integration_pagerduty_service_object",
+	},
+	"datadog_monitor.apm[\"store-frontend\"]": {
+		"address": "datadog_monitor.apm[\"store-frontend\"]",
+		"change": {
+			"actions": [
+				"update",
+			],
+			"after": {
+				"enable_logs_sample":  null,
+				"escalation_message":  "Service store-frontend has a high error rate. @store-frontend",
+				"evaluation_delay":    0,
+				"id":                  "17705837",
+				"include_tags":        true,
+				"locked":              false,
+				"message":             "Service store-frontend has a high error rate. @store-frontend",
+				"name":                "Service store-frontend has a high error rate",
+				"new_host_delay":      300,
+				"no_data_timeframe":   0,
+				"notify_audit":        false,
+				"notify_no_data":      false,
+				"query":               "avg(last_10m):sum:trace.rack.request.errors{env:ruby-shop,service:store-frontend } / sum:trace.rack.request.hits{env:ruby-shop,service:store-frontend } > 10",
+				"renotify_interval":   0,
+				"require_full_window": true,
+				"silenced":            {},
+				"tags": [
+					"env:ruby-shop",
+					"service:store-frontend",
+				],
+				"threshold_windows": {},
+				"thresholds": {
+					"critical": "10.0",
+					"warning":  "8.0",
+				},
+				"timeout_h": 0,
+				"type":      "query alert",
+			},
+			"after_unknown": {},
+			"before": {
+				"enable_logs_sample":  null,
+				"escalation_message":  "Service store-frontend has a high error rate. @store-frontend",
+				"evaluation_delay":    0,
+				"id":                  "17705837",
+				"include_tags":        true,
+				"locked":              false,
+				"message":             "Service store-frontend has a high error rate. @store-frontend\n\nI SURE HOPE THESE THRESHOLD LEVELS ARE GOOD 🤞",
+				"name":                "Service store-frontend has a high error rate",
+				"new_host_delay":      300,
+				"no_data_timeframe":   0,
+				"notify_audit":        false,
+				"notify_no_data":      false,
+				"query":               "avg(last_10m):sum:trace.rack.request.errors{env:ruby-shop,service:store-frontend} / sum:trace.rack.request.hits{env:ruby-shop,service:store-frontend} > 10",
+				"renotify_interval":   0,
+				"require_full_window": true,
+				"silenced":            {},
+				"tags": [
+					"env:ruby-shop",
+					"service:store-frontend",
+				],
+				"threshold_windows": {},
+				"thresholds": {
+					"critical": "10.0",
+					"warning":  "8.0",
+				},
+				"timeout_h": 0,
+				"type":      "query alert",
+			},
+		},
+		"deposed":        "",
+		"index":          "store-frontend",
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "apm",
+		"provider_name":  "datadog",
+		"type":           "datadog_monitor",
+	},
 }
 
 output_changes = {}
@@ -5801,10 +5973,115 @@ raw = {
 					"schema_version":      0,
 					"type":                "datadog_integration_pagerduty",
 				},
+				{
+					"address": "datadog_integration_pagerduty_service_object.ecommerce",
+					"depends_on": [
+						"datadog_integration_pagerduty.pd",
+					],
+					"expressions": {
+						"service_key": {
+							"references": [
+								"each.value",
+							],
+						},
+						"service_name": {
+							"references": [
+								"each.key",
+							],
+						},
+					},
+					"for_each_expression": {
+						"references": [
+							"var.services",
+						],
+					},
+					"mode":                "managed",
+					"name":                "ecommerce",
+					"provider_config_key": "datadog",
+					"schema_version":      0,
+					"type":                "datadog_integration_pagerduty_service_object",
+				},
+				{
+					"address": "datadog_monitor.apm",
+					"expressions": {
+						"escalation_message": {
+							"references": [
+								"each.key",
+								"each.key",
+							],
+						},
+						"include_tags": {
+							"constant_value": true,
+						},
+						"message": {
+							"references": [
+								"each.key",
+								"each.key",
+							],
+						},
+						"name": {
+							"references": [
+								"each.key",
+							],
+						},
+						"notify_audit": {
+							"constant_value": false,
+						},
+						"notify_no_data": {
+							"constant_value": false,
+						},
+						"query": {
+							"references": [
+								"var.environment",
+								"each.key",
+								"var.environment",
+								"each.key",
+								"each.value",
+							],
+						},
+						"renotify_interval": {
+							"constant_value": 0,
+						},
+						"tags": {
+							"references": [
+								"each.key",
+								"var.environment",
+							],
+						},
+						"thresholds": {
+							"references": [
+								"each.value",
+								"each.value",
+							],
+						},
+						"timeout_h": {
+							"constant_value": 0,
+						},
+						"type": {
+							"constant_value": "query alert",
+						},
+					},
+					"for_each_expression": {
+						"references": [
+							"var.services",
+						],
+					},
+					"mode":                "managed",
+					"name":                "apm",
+					"provider_config_key": "datadog",
+					"schema_version":      0,
+					"type":                "datadog_monitor",
+				},
 			],
 			"variables": {
-				"service": {
-					"description": "Name of service",
+				"application": {
+					"description": "Name of application",
+				},
+				"environment": {
+					"description": "Environment tag for APM",
+				},
+				"services": {
+					"description": "Services and query alert thresholds",
 				},
 			},
 		},
@@ -7335,6 +7612,58 @@ raw = {
 						],
 						"services":  [],
 						"subdomain": "ddog",
+					},
+				},
+				{
+					"address":        "datadog_integration_pagerduty_service_object.ecommerce[\"store-frontend\"]",
+					"index":          "store-frontend",
+					"mode":           "managed",
+					"name":           "ecommerce",
+					"provider_name":  "datadog",
+					"schema_version": 0,
+					"type":           "datadog_integration_pagerduty_service_object",
+					"values": {
+						"id":           "store-frontend",
+						"service_key":  "54321098765432109876",
+						"service_name": "store-frontend",
+					},
+				},
+				{
+					"address":        "datadog_monitor.apm[\"store-frontend\"]",
+					"index":          "store-frontend",
+					"mode":           "managed",
+					"name":           "apm",
+					"provider_name":  "datadog",
+					"schema_version": 0,
+					"type":           "datadog_monitor",
+					"values": {
+						"enable_logs_sample":  null,
+						"escalation_message":  "Service store-frontend has a high error rate. @store-frontend",
+						"evaluation_delay":    0,
+						"id":                  "17705837",
+						"include_tags":        true,
+						"locked":              false,
+						"message":             "Service store-frontend has a high error rate. @store-frontend",
+						"name":                "Service store-frontend has a high error rate",
+						"new_host_delay":      300,
+						"no_data_timeframe":   0,
+						"notify_audit":        false,
+						"notify_no_data":      false,
+						"query":               "avg(last_10m):sum:trace.rack.request.errors{env:ruby-shop,service:store-frontend } / sum:trace.rack.request.hits{env:ruby-shop,service:store-frontend } > 10",
+						"renotify_interval":   0,
+						"require_full_window": true,
+						"silenced":            {},
+						"tags": [
+							"env:ruby-shop",
+							"service:store-frontend",
+						],
+						"threshold_windows": {},
+						"thresholds": {
+							"critical": "10.0",
+							"warning":  "8.0",
+						},
+						"timeout_h": 0,
+						"type":      "query alert",
 					},
 				},
 			],
@@ -8868,6 +9197,61 @@ raw = {
 							],
 							"services":  [],
 							"subdomain": "ddog",
+						},
+					},
+					{
+						"address": "datadog_integration_pagerduty_service_object.ecommerce",
+						"depends_on": [
+							"datadog_integration_pagerduty.pd",
+						],
+						"index":          "store-frontend",
+						"mode":           "managed",
+						"name":           "ecommerce",
+						"provider_name":  "datadog",
+						"schema_version": 0,
+						"type":           "datadog_integration_pagerduty_service_object",
+						"values": {
+							"id":           "store-frontend",
+							"service_key":  "54321098765432109876",
+							"service_name": "store-frontend",
+						},
+					},
+					{
+						"address":        "datadog_monitor.apm",
+						"index":          "store-frontend",
+						"mode":           "managed",
+						"name":           "apm",
+						"provider_name":  "datadog",
+						"schema_version": 0,
+						"type":           "datadog_monitor",
+						"values": {
+							"enable_logs_sample":  null,
+							"escalation_message":  "Service store-frontend has a high error rate. @store-frontend",
+							"evaluation_delay":    0,
+							"id":                  "17705837",
+							"include_tags":        true,
+							"locked":              false,
+							"message":             "Service store-frontend has a high error rate. @store-frontend\n\nI SURE HOPE THESE THRESHOLD LEVELS ARE GOOD 🤞",
+							"name":                "Service store-frontend has a high error rate",
+							"new_host_delay":      300,
+							"no_data_timeframe":   0,
+							"notify_audit":        false,
+							"notify_no_data":      false,
+							"query":               "avg(last_10m):sum:trace.rack.request.errors{env:ruby-shop,service:store-frontend} / sum:trace.rack.request.hits{env:ruby-shop,service:store-frontend} > 10",
+							"renotify_interval":   0,
+							"require_full_window": true,
+							"silenced":            {},
+							"tags": [
+								"env:ruby-shop",
+								"service:store-frontend",
+							],
+							"threshold_windows": {},
+							"thresholds": {
+								"critical": "10.0",
+								"warning":  "8.0",
+							},
+							"timeout_h": 0,
+							"type":      "query alert",
 						},
 					},
 				],
@@ -11917,11 +12301,119 @@ raw = {
 			"provider_name": "datadog",
 			"type":          "datadog_integration_pagerduty",
 		},
+		{
+			"address": "datadog_integration_pagerduty_service_object.ecommerce[\"store-frontend\"]",
+			"change": {
+				"actions": [
+					"no-op",
+				],
+				"after": {
+					"id":           "store-frontend",
+					"service_key":  "54321098765432109876",
+					"service_name": "store-frontend",
+				},
+				"after_unknown": {},
+				"before": {
+					"id":           "store-frontend",
+					"service_key":  "54321098765432109876",
+					"service_name": "store-frontend",
+				},
+			},
+			"index":         "store-frontend",
+			"mode":          "managed",
+			"name":          "ecommerce",
+			"provider_name": "datadog",
+			"type":          "datadog_integration_pagerduty_service_object",
+		},
+		{
+			"address": "datadog_monitor.apm[\"store-frontend\"]",
+			"change": {
+				"actions": [
+					"update",
+				],
+				"after": {
+					"enable_logs_sample":  null,
+					"escalation_message":  "Service store-frontend has a high error rate. @store-frontend",
+					"evaluation_delay":    0,
+					"id":                  "17705837",
+					"include_tags":        true,
+					"locked":              false,
+					"message":             "Service store-frontend has a high error rate. @store-frontend",
+					"name":                "Service store-frontend has a high error rate",
+					"new_host_delay":      300,
+					"no_data_timeframe":   0,
+					"notify_audit":        false,
+					"notify_no_data":      false,
+					"query":               "avg(last_10m):sum:trace.rack.request.errors{env:ruby-shop,service:store-frontend } / sum:trace.rack.request.hits{env:ruby-shop,service:store-frontend } > 10",
+					"renotify_interval":   0,
+					"require_full_window": true,
+					"silenced":            {},
+					"tags": [
+						"env:ruby-shop",
+						"service:store-frontend",
+					],
+					"threshold_windows": {},
+					"thresholds": {
+						"critical": "10.0",
+						"warning":  "8.0",
+					},
+					"timeout_h": 0,
+					"type":      "query alert",
+				},
+				"after_unknown": {},
+				"before": {
+					"enable_logs_sample":  null,
+					"escalation_message":  "Service store-frontend has a high error rate. @store-frontend",
+					"evaluation_delay":    0,
+					"id":                  "17705837",
+					"include_tags":        true,
+					"locked":              false,
+					"message":             "Service store-frontend has a high error rate. @store-frontend\n\nI SURE HOPE THESE THRESHOLD LEVELS ARE GOOD 🤞",
+					"name":                "Service store-frontend has a high error rate",
+					"new_host_delay":      300,
+					"no_data_timeframe":   0,
+					"notify_audit":        false,
+					"notify_no_data":      false,
+					"query":               "avg(last_10m):sum:trace.rack.request.errors{env:ruby-shop,service:store-frontend} / sum:trace.rack.request.hits{env:ruby-shop,service:store-frontend} > 10",
+					"renotify_interval":   0,
+					"require_full_window": true,
+					"silenced":            {},
+					"tags": [
+						"env:ruby-shop",
+						"service:store-frontend",
+					],
+					"threshold_windows": {},
+					"thresholds": {
+						"critical": "10.0",
+						"warning":  "8.0",
+					},
+					"timeout_h": 0,
+					"type":      "query alert",
+				},
+			},
+			"index":         "store-frontend",
+			"mode":          "managed",
+			"name":          "apm",
+			"provider_name": "datadog",
+			"type":          "datadog_monitor",
+		},
 	],
 	"terraform_version": "0.12.24",
 	"variables": {
-		"service": {
+		"application": {
 			"value": "eCommerce",
+		},
+		"environment": {
+			"value": "ruby-shop",
+		},
+		"services": {
+			"value": {
+				"store-frontend": {
+					"critical":       10,
+					"pd_service_key": "54321098765432109876",
+					"warning":        8,
+				},
+			},
 		},
 	},
 }

@@ -1,0 +1,15 @@
+import "tfplan/v2" as tfplan
+
+resources = values(tfplan.planned_values.resources)
+
+monitors = filter resources as _, v { v.type is "datadog_monitor" }
+
+all_monitors_notify_pagerduty = rule {
+	all monitors as monitor {
+		"@pagerduty" in monitor.values.message
+	}
+}
+
+main = rule {
+	all_monitors_notify_pagerduty
+}
