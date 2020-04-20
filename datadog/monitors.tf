@@ -53,7 +53,7 @@ resource "datadog_monitor" "apm_service_high_p90_latency" {
   message            = "Service ${each.key} has a high p90 latency. @pagerduty-${each.key}"
   escalation_message = "Service ${each.key} has a high p90 latency!! @pagerduty-${each.key}"
 
-  query = "avg:trace.rack.request.duration.by.service.90p{service:${each.key},env:${env.environment}}"
+  query = "avg:trace.rack.request.duration.by.service.90p{service:${each.key},env:${var.environment}}"
 
   thresholds = {
     warning  = each.value.high_p90_latency_warning
