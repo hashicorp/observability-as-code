@@ -3,6 +3,7 @@ environment = "ruby-shop"
 services = {
   store-frontend = {
     pd_service_key            = "54321098765432109876"
+    environment               = "ruby-shop"
     high_error_rate_critical  = 10
     high_error_rate_warning   = 8
     high_avg_latency_critical = 3
@@ -12,6 +13,7 @@ services = {
   }
   advertisements-service = {
     pd_service_key            = "54321098765432109877"
+    environment               = "none"
     high_error_rate_critical  = 10
     high_error_rate_warning   = 8
     high_avg_latency_critical = 3
@@ -21,6 +23,7 @@ services = {
   }
   discounts-service = {
     pd_service_key            = "54321098765432109878"
+    environment               = "none"
     high_error_rate_critical  = 10
     high_error_rate_warning   = 8
     high_avg_latency_critical = 3
