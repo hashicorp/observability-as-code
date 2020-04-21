@@ -5,7 +5,7 @@ resource "datadog_monitor" "apm_service_high_error_rate" {
   message            = "Service ${each.key} has a high error rate. @pagerduty-${each.key}"
   escalation_message = "Service ${each.key} has a high error rate!! @pagerduty-${each.key}"
 
-  query = "avg(last_10m):(sum:trace.rack.request.errors{env:${each.value.environment},service:${each.key} } / sum:trace.rack.request.hits{env:${each.value.environment},service:${each.key} }) > ${each.value.high_error_rate_critical}"
+  query = "avg(last_10m):(sum:trace.${each.value.framework}.request.errors{env:${each.value.environment},service:${each.key} } / sum:trace.${each.value.framework}.request.hits{env:${each.value.environment},service:${each.key} }) > ${each.value.high_error_rate_critical}"
 
   thresholds = {
     warning  = each.value.high_error_rate_warning
@@ -29,7 +29,7 @@ resource "datadog_monitor" "apm_service_high_avg_latency" {
   message            = "Service ${each.key} has a high average latency. @pagerduty-${each.key}"
   escalation_message = "Service ${each.key} has a high average latency!! @pagerduty-${each.key}"
 
-  query = "avg(last_10m): ( sum:trace.rack.request.duration{service:${each.key},env:${each.value.environment}}.rollup(sum).fill(zero)/sum:trace.rack.request.hits{service:${each.key},env:${each.value.environment}}.rollup(sum).fill(zero) ) > ${each.value.high_avg_latency_critical}"
+  query = "avg(last_10m):sum:trace.${each.value.framework}.request.duration{env:none,service:discounts-service} / sum:trace.flask.request.hits{env:none,service:discounts-service} > 3"
 
   thresholds = {
     warning  = each.value.high_avg_latency_warning
@@ -53,7 +53,7 @@ resource "datadog_monitor" "apm_service_high_p90_latency" {
   message            = "Service ${each.key} has a high p90 latency. @pagerduty-${each.key}"
   escalation_message = "Service ${each.key} has a high p90 latency!! @pagerduty-${each.key}"
 
-  query = "avg(last_10m):trace.rack.request.duration.by.service.90p{service:${each.key},env:${each.value.environment}} > ${each.value.high_p90_latency_critical}"
+  query = "avg(last_10m):trace.${each.value.framework}.request.duration.by.service.90p{service:${each.key},env:${each.value.environment}} > ${each.value.high_p90_latency_critical}"
 
   thresholds = {
     warning  = each.value.high_p90_latency_warning
