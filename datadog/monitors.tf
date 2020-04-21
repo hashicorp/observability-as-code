@@ -5,7 +5,7 @@ resource "datadog_monitor" "apm_service_high_error_rate" {
   message            = "Service ${each.key} has a high error rate. @pagerduty-${each.key}"
   escalation_message = "Service ${each.key} has a high error rate!! @pagerduty-${each.key}"
 
-  query = "avg(last_10m):(sum:trace.rack.request.errors{env:${var.environment},service:${each.key} } / sum:trace.rack.request.hits{env:${var.environment},service:${each.key} }) * 100 > ${each.value.high_error_rate_critical}"
+  query = "avg(last_10m):(sum:trace.rack.request.errors{env:${var.environment},service:${each.key} } / sum:trace.rack.request.hits{env:${var.environment},service:${each.key} }) > ${each.value.high_error_rate_critical}"
 
   thresholds = {
     warning  = each.value.high_error_rate_warning
