@@ -6,7 +6,7 @@ ifndef PROJECT
 endif
 
 build: check-variables
-	packer build -var 'project_id=${PROJECT}' packer.json
+	packer build -var 'project_id=${PROJECT}' -var 'zone=${ZONE}' packer.json
 
 force-build: check-variables
-	packer build -force -var 'project_id=${PROJECT}' packer.json
+	packer build -force -var 'project_id=${PROJECT}' -var 'zone=${ZONE}' packer.json

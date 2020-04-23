@@ -2,19 +2,32 @@ terraform {
   required_version = "~>0.12"
 }
 
-variable "dd_api_key" {}
+variable "dd_api_key" {
+  type        = string
+  description = "Datadog Agent API key"
+}
+
+variable "zone" {
+  type        = string
+  description = "GCP Zone to deploy"
+  default     = "us-east1-b"
+}
 
 variable "enable_firewall" {
-  default = false
+  type        = bool
+  description = "Creates firewall rule to allow public traffic"
+  default     = false
 }
 
 variable "fix_frontend" {
-  default = true
+  type        = bool
+  description = "Toggle to fix frontend application"
+  default     = true
 }
 
 provider "google" {
   version = "~> 3.16"
-  zone    = "us-central1-a"
+  zone    = var.zone
 }
 
 data "google_compute_network" "default" {
@@ -42,8 +55,8 @@ resource "google_compute_address" "ecommerce" {
 
 resource "google_compute_instance" "ecommerce" {
   name         = "datadog-webinar-ecommerce"
-  machine_type = "n1-standard-1"
-  zone         = "us-central1-a"
+  machine_type = "n1-standard-2"
+  zone         = var.zone
 
   tags = ["datadog", "webinar"]
 

@@ -1,13 +1,14 @@
 {
   "variables": {
-    "project_id": ""
+    "project_id": "",
+    "zone": ""
   },
   "builders": [
     {
       "type": "googlecompute",
       "project_id": "{{user `project_id`}}",
       "source_image_family": "ubuntu-1804-lts",
-      "zone": "us-central1-a",
+      "zone": "{{user `zone`}}",
       "ssh_username" : "root",
       "image_name": "datadog-ecommerce",
       "image_labels": {
