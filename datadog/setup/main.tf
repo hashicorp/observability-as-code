@@ -13,10 +13,10 @@ variable "zone" {
   default     = "us-east1-b"
 }
 
-variable "enable_firewall" {
+variable "enable_firewall_rule" {
   type        = bool
   description = "Creates firewall rule to allow public traffic"
-  default     = false
+  default     = true
 }
 
 variable "fix_frontend" {
@@ -35,7 +35,7 @@ data "google_compute_network" "default" {
 }
 
 resource "google_compute_firewall" "ecommerce" {
-  count   = var.enable_firewall ? 1 : 0
+  count   = var.enable_firewall_rule ? 1 : 0
   name    = "allow-ecommerce"
   network = "default"
 
