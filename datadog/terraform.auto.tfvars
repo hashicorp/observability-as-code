@@ -28,8 +28,8 @@ services = {
     framework                 = "flask"
     high_error_rate_critical  = 10
     high_error_rate_warning   = 8
-    high_avg_latency_critical = 3
-    high_avg_latency_warning  = 2
+    high_avg_latency_critical = 4
+    high_avg_latency_warning  = 3
     high_p90_latency_critical = 6
     high_p90_latency_warning  = 4
   }

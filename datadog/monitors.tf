@@ -31,7 +31,7 @@ resource "datadog_monitor" "apm_service_high_avg_latency" {
 
   query = "avg(last_10m):sum:trace.${each.value.framework}.request.duration{env:${each.value.environment},service:${each.key}} / sum:trace.flask.request.hits{env:${each.value.environment},service:${each.key}} > ${each.value.high_avg_latency_critical}"
 
- thresholds = {
+  thresholds = {
     warning  = each.value.high_avg_latency_warning
     critical = each.value.high_avg_latency_critical
   }
