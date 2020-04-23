@@ -12,9 +12,9 @@ resource "datadog_monitor" "apm_store_frontend_anomalous_p90_latency" {
     critical_recovery = 0
   }
 
-  threshold_windows {
-    trigger_window  = "last_5m"
-    recovery_window = "last_10m"
+  threshold_windows = {
+    "trigger_window"  = "last_5m"
+    "recovery_window" = "last_10m"
   }
 
   notify_no_data    = false
