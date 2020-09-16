@@ -1,5 +1,16 @@
 terraform {
-  required_version = "~>0.12"
+  required_providers {
+    google = {
+      source = "hashicorp/google"
+      version = "3.39.0"
+    }
+  }
+
+  required_version = "~>0.13"
+}
+
+provider "google" {
+  zone    = var.zone
 }
 
 variable "dd_api_key" {
@@ -23,11 +34,6 @@ variable "fix_frontend" {
   type        = bool
   description = "Toggle to fix frontend application"
   default     = true
-}
-
-provider "google" {
-  version = "~> 3.16"
-  zone    = var.zone
 }
 
 data "google_compute_network" "default" {
