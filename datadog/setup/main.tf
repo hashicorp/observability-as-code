@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     google = {
-      source = "hashicorp/google"
+      source  = "hashicorp/google"
       version = "3.39.0"
     }
   }
@@ -10,7 +10,7 @@ terraform {
 }
 
 provider "google" {
-  zone    = var.zone
+  zone = var.zone
 }
 
 variable "dd_api_key" {
