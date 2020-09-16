@@ -9,7 +9,7 @@
       "project_id": "{{user `project_id`}}",
       "source_image_family": "ubuntu-1804-lts",
       "zone": "{{user `zone`}}",
-      "ssh_username" : "root",
+      "ssh_username": "root",
       "image_name": "datadog-ecommerce",
       "image_labels": {
         "created": "{{ timestamp }}"
@@ -32,5 +32,4 @@
       "script": "bootstrap.sh"
     }
   ]
-
 }
