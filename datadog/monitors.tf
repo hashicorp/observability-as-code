@@ -69,4 +69,3 @@ resource "datadog_monitor" "apm_service_high_p90_latency" {
 
   tags = ["service:${each.key}", "env:${each.value.environment}"]
 }
-
