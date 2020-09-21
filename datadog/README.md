@@ -8,7 +8,7 @@ for configuring dashboards, monitors, and tracing.
 
 * [Datadog Account](https://app.datadoghq.com/signup)
 * [HashiCorp Terraform 0.12+](https://www.terraform.io/downloads.html)
-* docker-compose
+* `docker-compose`
 
 ### Optional: Remote Instance of eCommerce Application
 
