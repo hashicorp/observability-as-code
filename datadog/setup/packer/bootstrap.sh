@@ -21,16 +21,16 @@ apt-get update
 
 apt-get -y install docker-ce
 
-curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+curl -L "https://github.com/docker/compose/releases/download/1.28.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 
 apt-get -y install git wget
 
 git clone https://github.com/DataDog/ecommerce-workshop.git
 
-curl -L https://github.com/buger/goreplay/releases/download/v1.0.0/gor_1.0.0_x64.tar.gz -o gor_1.0.0_x64.tar.gz
-tar -xf gor_1.0.0_x64.tar.gz
+curl -L https://github.com/buger/goreplay/releases/download/v1.2.0/gor_v1.2.0_x64.tar.gz -o gor_v1.2.0_x64.tar.gz
+tar -xf gor_v1.2.0_x64.tar.gz
 mv gor /usr/local/bin/gor
-rm -rf gor_1.0.0_x64.tar.gz
+rm -rf gor_v1.2.0_x64.tar.gz
 
 systemctl disable gor
