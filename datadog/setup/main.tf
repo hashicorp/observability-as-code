@@ -2,7 +2,7 @@ terraform {
   required_providers {
     google = {
       source  = "hashicorp/google"
-      version = "3.39.0"
+      version = "3.57.0"
     }
   }
 
@@ -10,6 +10,7 @@ terraform {
 }
 
 provider "google" {
+  project = var.project
   zone = var.zone
 }
 
@@ -18,10 +19,21 @@ variable "dd_api_key" {
   description = "Datadog Agent API key"
 }
 
+variable "project" {
+  type        = string
+  description = "GCP Project"
+}
+
 variable "zone" {
   type        = string
   description = "GCP Zone to deploy"
   default     = "us-east1-b"
+}
+
+variable "network" {
+  type        = string
+  description = "GCP VCP to deploy"
+  default     = "default"
 }
 
 variable "enable_firewall_rule" {
@@ -36,14 +48,10 @@ variable "fix_frontend" {
   default     = true
 }
 
-data "google_compute_network" "default" {
-  name = "default"
-}
-
 resource "google_compute_firewall" "ecommerce" {
   count   = var.enable_firewall_rule ? 1 : 0
   name    = "allow-ecommerce"
-  network = "default"
+  network = var.network
 
   allow {
     protocol = "tcp"
@@ -73,7 +81,7 @@ resource "google_compute_instance" "ecommerce" {
   }
 
   network_interface {
-    network = "default"
+    network = var.network
 
     access_config {
       nat_ip = google_compute_address.ecommerce.address
@@ -86,7 +94,7 @@ resource "google_compute_instance" "ecommerce" {
   }
 
   metadata_startup_script = <<EOT
-    cd /root/ecommerce-workshop/docker-compose-files
+    cd /root/ecommerce-workshop/deploy/docker-compose
     POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres DD_API_KEY=${var.dd_api_key} docker-compose -f docker-compose-${local.docker_compose}-instrumented.yml up -d
     systemctl start gor
   EOT
