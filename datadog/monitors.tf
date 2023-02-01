@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 resource "datadog_monitor" "apm_service_high_error_rate" {
   for_each           = var.services
   name               = "Service ${each.key} has a high error rate on ${each.value.environment}"
