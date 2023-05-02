@@ -89,7 +89,7 @@ resource "google_compute_instance" "ecommerce" {
   }
 
   metadata_startup_script = <<EOT
-    cd /root/ecommerce-workshop/docker-compose-files
+    cd /root/ecommerce-workshop/deploy/docker-compose
     POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres DD_API_KEY=${var.dd_api_key} docker-compose -f docker-compose-${local.docker_compose}-instrumented.yml up -d
     systemctl start gor
   EOT
