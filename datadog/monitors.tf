@@ -8,7 +8,7 @@ resource "datadog_monitor" "apm_service_high_error_rate" {
   message            = "Service ${each.key} has a high error rate. @pagerduty-${each.key}"
   escalation_message = "Service ${each.key} has a high error rate!! @pagerduty-${each.key}"
 
-  query = "avg(last_10m):(sum:trace.${each.value.framework}.request.errors{env:${each.value.environment},service:${each.key} } / sum:trace.${each.value.framework}.request.hits{env:${each.value.environment},service:${each.key} }) > ${each.value.high_error_rate_critical}"
+  query = "avg(last_10m):(sum:trace.${each.value.framework}.request.errors{env:${each.value.environment},service:${each.key}} / sum:trace.${each.value.framework}.request.hits{env:${each.value.environment},service:${each.key}}) > ${each.value.high_error_rate_critical}"
 
 
   monitor_thresholds {
@@ -33,7 +33,7 @@ resource "datadog_monitor" "apm_service_high_avg_latency" {
   message            = "Service ${each.key} has a high average latency. @pagerduty-${each.key}"
   escalation_message = "Service ${each.key} has a high average latency!! @pagerduty-${each.key}"
 
-  query = "avg(last_10m):sum:trace.${each.value.framework}.request.duration{env:${each.value.environment},service:${each.key}} / sum:trace.flask.request.hits{env:${each.value.environment},service:${each.key}} > ${each.value.high_avg_latency_critical}"
+  query = "avg(last_10m):(sum:trace.${each.value.framework}.request.duration{env:${each.value.environment},service:${each.key}} / sum:trace.flask.request.hits{env:${each.value.environment},service:${each.key}}) > ${each.value.high_avg_latency_critical}"
 
   monitor_thresholds {
     warning  = each.value.high_avg_latency_warning
