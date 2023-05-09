@@ -10,7 +10,6 @@ resource "datadog_monitor" "apm_service_high_error_rate" {
 
   query = "avg(last_10m):(sum:trace.${each.value.framework}.request.errors{env:${each.value.environment},service:${each.key}} / sum:trace.${each.value.framework}.request.hits{env:${each.value.environment},service:${each.key}}) > ${each.value.high_error_rate_critical}"
 
-
   monitor_thresholds {
     warning  = each.value.high_error_rate_warning
     critical = each.value.high_error_rate_critical
