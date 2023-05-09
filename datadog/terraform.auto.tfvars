@@ -5,7 +5,7 @@ application = "eCommerce"
 services = {
   store-frontend = {
     pd_service_key            = "54321098765432109876"
-    environment               = "ruby-shop"
+    environment               = "development"
     framework                 = "rack"
     high_error_rate_critical  = 10
     high_error_rate_warning   = 8
@@ -16,7 +16,7 @@ services = {
   }
   advertisements-service = {
     pd_service_key            = "54321098765432109877"
-    environment               = "ruby-shop"
+    environment               = "development"
     framework                 = "flask"
     high_error_rate_critical  = 10
     high_error_rate_warning   = 8
@@ -27,7 +27,7 @@ services = {
   }
   discounts-service = {
     pd_service_key            = "54321098765432109878"
-    environment               = "ruby-shop"
+    environment               = "development"
     framework                 = "flask"
     high_error_rate_critical  = 10
     high_error_rate_warning   = 8
