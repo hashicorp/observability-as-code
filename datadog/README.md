@@ -23,27 +23,33 @@ is not on your laptop, you will need:
 Locally, to deploy eCommerce application:
 
 1. Clone the eCommerce example.
+
    ```shell
    git clone https://github.com/datadog/ecommerce-workshop
    ```
-1. Follow the instructions in the README to create it locally.
 
+1. Follow the instructions in the README to create it locally.
 
 Remotely, to deploy eCommerce application:
 
 1. Clone this repository.
 
 1. Build a GCP image with Docker, docker-compose, and dependencies.
+
    ```shell
    cd datadog/setup/packer
-   ZONE=${GOOGLE_ZONE} PROJECT=${GOOGLE_PROJECT} make build
+   ZONE=${GOOGLE_ZONE} PROJECT_ID=${GOOGLE_PROJECT_ID} make build
    ```
+
    This makes it faster to spin up the instance once it's created.
 
 1. After the GCP image has been created, you can spin up the instance
    with Terraform. Make sure to define the Terraform variables.
+
    ```shell
-   export TF_VAR_dd_api_key=${DATADOG_API_KEY}
+   export TF_VAR_datadog_api_key=${DATADOG_API_KEY}
+   export TF_VAR_project_id=${GCP_PROJECT}
+
    terraform init
    terraform plan
    terraform apply
@@ -53,6 +59,7 @@ Remotely, to deploy eCommerce application:
    to the application within the GCP instance. You can access the public
    endpoint of the instance by retrieving the public IP from the Terraform
    output.
+
    ```shell
    open http://$(terraform output ecommerce):3000
    ```
@@ -63,26 +70,28 @@ You can deploy the monitors and dashboards for the application
 using Terraform.
 
 1. Define the Datadog API and Application Key.
+
    ```shell
-   export DATADOG_API_KEY=${DATADOG_API_KEY}
-   export DATADOG_APP_KEY=${DATADOG_APP_KEY}
-   cd datadog/
+   export TF_VAR_datadog_api_key=${DATADOG_API_KEY}
+   export TF_VAR_datadog_app_key=${DATADOG_APP_KEY}
    ```
 
 1. Check out `terraform.auto.tfvars` for the variable
    definitions for the ecommerce application.
 
 1. Dry run the changes to the monitors and dashboards.
+
    ```shell
    cd datadog/
    terraform init
-   terraform plan -var-file=terraform.auto.tfvars
+   terraform plan
    ```
 
 1. Apply the changes to the monitors and dashboards.
+
    ```shell
    cd datadog/
-   terraform apply -var-file=terraform.auto.tfvars
+   terraform apply
    ```
 
 This will create a fake integration to PagerDuty,
