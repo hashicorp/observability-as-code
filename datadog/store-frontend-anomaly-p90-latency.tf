@@ -15,13 +15,13 @@ resource "datadog_monitor" "apm_store_frontend_anomalous_p90_latency" {
 
   query = "avg(last_1h):anomalies(avg:trace.rack.request.duration.by.service.90p{service:store-frontend,env:ruby-shop}, 'basic', 2, direction='above', interval=20) >= ${local.critical}"
 
-  thresholds = {
+  monitor_thresholds {
     critical          = local.critical
     warning           = local.warning
     critical_recovery = local.critical_recovery
   }
 
-  threshold_windows = {
+  monitor_threshold_windows {
     trigger_window  = "last_5m"
     recovery_window = "last_10m"
   }

@@ -9,7 +9,7 @@ export HOME=/root
 # Hack to make sure we don't start installing packages until the filesystem is available.
 echo "waiting 180 seconds for cloud-init to update /etc/apt/sources.list"
 timeout 180 /bin/bash -c \
-  'until stat /var/lib/cloud/instance/boot-finished 2>/dev/null; do echo waiting ...; sleep 1; done'
+    'until stat /var/lib/cloud/instance/boot-finished 2>/dev/null; do echo waiting ...; sleep 1; done'
 
 # Install packages.
 export DEBIAN_FRONTEND=noninteractive
