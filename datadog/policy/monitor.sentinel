@@ -1,3 +1,5 @@
+# Copyright IBM Corp. 2020, 2026
+
 import "tfplan/v2" as tfplan
 
 resources = values(tfplan.planned_values.resources)
